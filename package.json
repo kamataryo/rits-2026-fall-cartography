@@ -20,7 +20,7 @@
   "author": "kamataryo (ryo@kamataworks.com)",
   "license": "MIT",
   "devDependencies": {
-    "@marp-team/marp-cli": "^4.5.1"
+    "@marp-team/marp-cli": "^4.5.0"
   },
   "engines": {
     "node": ">=24"
