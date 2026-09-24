@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 第13回：応用プロジェクト（1）- 地図プロジェクトの企画
 

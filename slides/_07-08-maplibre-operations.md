@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 第7-8回：MapLibre GL JS の基礎操作
 
@@ -973,7 +973,7 @@ map.on('load', () => {
 
 ### 提出期限・方法
 - **期限**：次回授業開始時
-- **方法**：Manaba+R経由
+- **方法**：moodle+R経由
 
 </div>
 

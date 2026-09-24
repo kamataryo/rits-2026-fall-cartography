@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 第10回：スタイルの基本（ポイント、ライン、ポリゴン）
 
@@ -183,7 +183,7 @@ https://maplibre.org/maplibre-style-spec/expressions/#interpolate
 ## 課題の提出方法
 
 - フォークしたリポジトリの URL を提出
-- 期限: 日付は manaba+R で確認
+- 期限: 日付は moodle+R で確認
 
 ---
 

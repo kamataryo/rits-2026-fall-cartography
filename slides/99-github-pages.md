@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 補足: GitHub Pages を使ったプロジェクトのウェブ公開について
 

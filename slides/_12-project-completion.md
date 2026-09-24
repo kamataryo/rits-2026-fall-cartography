@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 第12回：応用プロジェクト（2）- 地図プロジェクトの完成
 
@@ -912,7 +912,7 @@ async function finalCheck() {
 
 ### 提出期限・方法
 - **期限**：次回授業開始時（第13-14回発表会）
-- **方法**：Manaba+R経由
+- **方法**：moodle+R経由
 - **注意事項**：
   - すべてのファイルを zip 形式で圧縮して提出
   - ファイル名は `[学籍番号]_final_project.zip`

@@ -7,7 +7,7 @@ paginate: true
 
 <!-- _class: title -->
 
-# MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
+# オープンデータで始める<br />ウェブカートグラフィ入門
 
 ## 第11回:ベクトルタイルの仕組みと実践
 
@@ -401,8 +401,8 @@ Maputnik を 使用して、国を「大陸ごと」に塗り分ける地図ス�
 
 ### 提出期限・方法
 
-- **期限**: 日付は manaba+R で確認
-- **方法**: Maputnik からJSONファイルを出力し、それを Manaba+R 経由で提出
+- **期限**: 日付は moodle+R で確認
+- **方法**: Maputnik からJSONファイルを出力し、それを moodle+R 経由で提出
 
 </div>
 
