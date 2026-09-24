@@ -7,7 +7,7 @@
     "build": "marp -I slides/ -o output/ && cp -r ./slides/images ./output/images",
     "build:pdf": "marp -I slides/ --pdf -o output/pdf/",
     "build:pptx": "marp -I slides/ --pptx -o output/pptx/",
-    "build:all": "rm -rf output && npm run build && npm run build:pdf && npm run build:pptx",
+    "build:all": "rm -rf output && pnpm build && pnpm build:pdf && pnpm build:pptx",
     "dev": "marp -s -I slides/"
   },
   "keywords": [
@@ -23,6 +23,7 @@
     "@marp-team/marp-cli": "^4.5.1"
   },
   "engines": {
-    "node": ">=20.0.0"
-  }
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@12.3.4"
 }

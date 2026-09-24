@@ -10,13 +10,13 @@ https://kamataryo.github.io/rits-2026-fall-cartography/
 
 ## スライドのビルド
 
-Node.js 20 以上が必要です。
+Node.js 24 以上と pnpm が必要です。
 
 ```shell
-npm install
-npm run dev        # http://localhost:8080 でプレビュー（変更を監視）
-npm run build      # HTML を output/ に出力
-npm run build:all  # HTML・PDF・PPTX をまとめて出力
+pnpm install
+pnpm dev        # http://localhost:8080 でプレビュー（変更を監視）
+pnpm build      # HTML を output/ に出力
+pnpm build:all  # HTML・PDF・PPTX をまとめて出力
 ```
 
 エディタでのプレビューには [Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode) が便利です。
