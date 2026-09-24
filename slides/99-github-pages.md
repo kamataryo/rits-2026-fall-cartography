@@ -5,11 +5,6 @@ class: title
 paginate: true
 ---
 
-<style>
-/* ページ番号は右上。リアクションコンポーネントをおきたいので */
-section.title::after { top: 21px; }
-</style>
-
 <!-- _class: title -->
 
 # MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門

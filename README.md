@@ -25,8 +25,6 @@ pnpm build:all  # HTML・PDF・PPTX をまとめて出力
 
 - `slides/` — 各回のスライド。ファイル名の先頭の番号が回数です。`_` で始まるものは下書きで、ビルドには含まれますが授業ではまだ使っていません。
 - `slides/images/` — スライドで使う画像。ビルド時に `output/images/` にコピーされます。
-- `client-util/` — スライドに埋め込むリアクション・投票用の Web Components
-- `server/` — その投票機能の WebSocket API（AWS Lambda + DynamoDB、Serverless Framework）。詳しくは [server/README.md](./server/README.md)
 - `vector_tile.proto`, `vector-tile.sample.*` — ベクトルタイルの回で使うサンプル
 
 ## ライセンス

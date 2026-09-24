@@ -5,21 +5,6 @@ class: title
 paginate: true
 ---
 
-<script src="https://g69ye6vo2a.execute-api.ap-northeast-1.amazonaws.com/v1/client/vote-client.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("section").forEach(section => {
-      const reaction = document.createElement("reaction-component");
-      reaction.setAttribute("emojis", "👍,👎,🤔,💡");
-      section.appendChild(reaction);
-    });
-  });
-</script>
-<style>
-/* ページ番号は右上。リアクションコンポーネントをおきたいので */
-section.title::after { top: 21px; }
-</style>
-
 <!-- _class: title -->
 
 # MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
@@ -289,24 +274,6 @@ name,cat,age,favorite_1,favorite_2,location_pref,location_city
 - 1024kB = 1MB
 
 
-<vote-form vote-key="estimate-big-json" freetext="on" view="freeflow">
-  <style>
-    .vote-contents {
-      flex-direction: column;
-    }
-    #vote-form {
-      display: flex;
-      align-items: center;
-    }
-    #vote-form .free-input-group {
-      flex-grow: 1;
-      margin-right: 1em;
-    }
-    .chart-container, .freeflow-container {
-      height: 100px;
-    }
-  </style>
-</vote-form>
 
 ---
 
@@ -440,24 +407,6 @@ null
 
 **例**: `["ラーメン", "寿司", "カレー"]`
 
-<vote-form vote-key="favorite-foods-array" freetext="on" view="freeflow">
-  <style>
-    .vote-contents {
-      flex-direction: column;
-    }
-    #vote-form {
-      display: flex;
-      align-items: center;
-    }
-    #vote-form .free-input-group {
-      flex-grow: 1;
-      margin-right: 1em;
-    }
-    .chart-container, .freeflow-container {
-      height: 200px;
-    }
-  </style>
-</vote-form>
 
 ---
 
@@ -509,24 +458,6 @@ null
 
 **例**: `{"メニュー": "親子丼", "値段": 800}`
 
-<vote-form vote-key="lunch-object" freetext="on" view="freeflow">
-  <style>
-    .vote-contents {
-      flex-direction: column;
-    }
-    #vote-form {
-      display: flex;
-      align-items: center;
-    }
-    #vote-form .free-input-group {
-      flex-grow: 1;
-      margin-right: 1em;
-    }
-    .chart-container, .freeflow-container {
-      height: 200px;
-    }
-  </style>
-</vote-form>
 
 ---
 

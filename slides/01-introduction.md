@@ -6,22 +6,6 @@ paginate: true
 _html: true
 ---
 
-<script src="https://g69ye6vo2a.execute-api.ap-northeast-1.amazonaws.com/v1/client/vote-client.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("section").forEach(section => {
-      const reaction = document.createElement("reaction-component");
-      reaction.setAttribute("emojis", "👍,👎,🤔,💡");
-      section.appendChild(reaction);
-    });
-  });
-</script>
-<style>
-/* ページ番号は右上。リアクションコンポーネントをおきたいので */
-section.title::after { top: 21px; }
-</style>
-
-
 <!-- _class: title -->
 
 # MapLibre GL JS と OpenStreetMap で始める<br />ウェブカートグラフィ入門
@@ -82,7 +66,6 @@ MapLibre GL JS と OpenStreetMap で始めるウェブカートグラフィ入�
 
 使ったことがある地図を教えてください。
 
-<vote-form vote-key="favorite-maps" freetext="on" choices="Google Maps,マップ（iOS）,Yahoo!マップ,地理院地図,ゼンリン地図,地形図(国土地理院、紙)" />
 
 ---
 
@@ -90,21 +73,6 @@ MapLibre GL JS と OpenStreetMap で始めるウェブカートグラフィ入�
 
 - 紙、ウェブ、アプリ以外にどんな**媒体**があるだろうか？
 
-<vote-form vote-key="map-media" freetext="on" view="freeflow">
-  <style>
-    .vote-contents {
-      flex-direction: column;
-    }
-    #vote-form {
-      display: flex;
-      align-items: center;
-    }
-    #vote-form .free-input-group {
-      flex-grow: 1;
-      margin-right: 1em;
-    }
-  </style>
-</vote-form>
 
 ---
 
@@ -120,21 +88,6 @@ MapLibre GL JS と OpenStreetMap で始めるウェブカートグラフィ入�
 
 **デジタル（ウェブ）** の地図は、**紙**などの媒体とどのように違うのだろう？
 
-<vote-form vote-key="map-media-difference" freetext="on" view="freeflow">
-  <style>
-    .vote-contents {
-      flex-direction: column;
-    }
-    #vote-form {
-      display: flex;
-      align-items: center;
-    }
-    #vote-form .free-input-group {
-      flex-grow: 1;
-      margin-right: 1em;
-    }
-  </style>
-<vote-form>
 
 ---
 
