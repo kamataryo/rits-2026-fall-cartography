@@ -11,7 +11,7 @@ paginate: true
 
 ## 第3回: GeoJSON の基礎
 
-立命館大学 2025年度 秋セメスター 火曜5限
+立命館大学 2026年度 秋セメスター 火曜5限
 授業時間: 95分
 
 ---
@@ -167,7 +167,7 @@ JSON、 XML、 CSV、 etc.
 XML を構成するもの:
 - 要素 ex. `<element></element>`
 - 属性 ex. `attribute="value"`
-- テキスノード ex. `<element>これがテキストノード</element>`
+- テキストノード ex. `<element>これがテキストノード</element>`
 
 ---
 
@@ -240,15 +240,15 @@ pets:
 ## CSV
 
 ```csv
-name,cat,age,favorite_1,favorite_2,location_pref,location_city
+name,species,age,favorite_1,favorite_2,location_pref,location_city
 たま,cat,5,カリカリ,またたび,京都府,京都市
-ポチ,dog,4,いも,肉,滋賀県,大津市
+ポチ,dog,6,いも,肉類,滋賀県,大津市
 ```
 
 | `name` | `species` | `age` | `favorite_1` | `favorite_2` | `location_pref` | `location_city` |
 |------|----------|-----|-------------|-------------|----------------|----------------|
 | たま | cat | 5 | カリカリ | またたび | 京都府 | 京都市 |
-| ポチ | dog | 4 | いも | 肉 | 滋賀県 | 大津市 |
+| ポチ | dog | 6 | いも | 肉類 | 滋賀県 | 大津市 |
 
 ---
 
@@ -532,11 +532,11 @@ Hello
 
 - JavaScript の文法は JSON フォーマットの**スーパーセット**
 - JSON は JavaScript の**サブセット**、正しい JavaScript として解釈可能
-- ただし、JavaScript は JSON として解釈できない
+- ただし、JavaScript のコードが JSON として解釈できるとは限らない
 
 =>
 JSON は、JavaScript の自由な表現を「データ交換」に特化して制限したフォーマット
-この制限により、「相互運用性」「安全性」「可搬性」が保障されている
+この制限により、「相互運用性」「安全性」「可搬性」が保証されている
 
 ---
 
@@ -742,7 +742,7 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 
 #### 注意点
 - **経度が先、緯度が後**
-- 多くの地図ライブラリとは逆順
+- Google Maps など「緯度, 経度」の順で表示するサービスも多いので注意
 - 標高は3番目の要素（オプション）
 
 #### 例: 大阪駅の座標
@@ -754,15 +754,13 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 
 ### GeoJSON vs 他の地理空間データ形式
 
-## テキスト
-
 | 形式 | 特徴 | 用途 |
 |------|------|------|
-| **GeoJSON** | JSON ベース、Web標準 | Web地図、API | 
-| **KML** | XML ベース、Google 標準 | Google Earth |
-| **GPX** | XML ベース、GPS 標準 | GPS 機器 |
-| **Shapefile** | ESRI 標準、バイナリ | GIS ソフト | 小さい |
-| **GeoPackage** | バイナリ |　GIS ソフト |  
+| **GeoJSON** | JSON ベース（テキスト）、Web標準 | Web地図、API |
+| **KML** | XML ベース（テキスト）、OGC 標準 | Google Earth |
+| **GPX** | XML ベース（テキスト）、GPS 標準 | GPS 機器 |
+| **Shapefile** | Esri 仕様、バイナリ（複数ファイル） | GIS ソフト |
+| **GeoPackage** | SQLite ベース、バイナリ、OGC 標準 | GIS ソフト |
 
 
 ---
@@ -794,7 +792,7 @@ Point, LineString, Polygon をサポート。
 
 ### GPX
 
-点（wpt）、線（trk/trkpt）、ルート（rte/rtept）　をサポート
+点（wpt）、線（trk/trkpt）、ルート（rte/rtept）をサポート
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -811,10 +809,10 @@ Point, LineString, Polygon をサポート。
 
 ## その他の面白いデータフォーマット/位置情報データフォーマット
 
-## NDJSON　**N**ewline **D**elimited JSON (改行区切り JSON)
+## NDJSON **N**ewline **D**elimited JSON (改行区切り JSON)
 
-- JSON にはない CSV のメリットとして、1行づつの逐次処理がしやすい点があった
-- では、 JSON を1行づつ処理できるようにするには？
+- JSON にはない CSV のメリットとして、1行ずつの逐次処理がしやすい点があった
+- では、 JSON を1行ずつ処理できるようにするには？
 
 ```ndjson
 { "name": "たま", "age": 5 }
@@ -832,25 +830,25 @@ Point, LineString, Polygon をサポート。
 立命館大学周辺の主要施設を GeoJSON で表現
 
 #### 作成する Feature
-1. **大学本部**（Point）
+1. **大学（キャンパス）**（Point）
 2. **最寄り駅**（Point）
 3. **通学路**（LineString）
 4. **キャンパス敷地**（Polygon）
 
 ---
 
-#### 1. 大学本部（Point）
+#### 1. 大学（キャンパス）（Point）
 ```json
 {
   "type": "Feature",
   "geometry": {
     "type": "Point",
-    "coordinates": [135.5122, 34.9981]
+    "coordinates": [135.7245, 35.0330]
   },
   "properties": {
     "name": "立命館大学衣笠キャンパス",
     "type": "university",
-    "description": "メインキャンパス"
+    "description": "京都市北区のキャンパス"
   }
 }
 ```
@@ -863,10 +861,10 @@ Point, LineString, Polygon をサポート。
   "type": "Feature",
   "geometry": {
     "type": "Point",
-    "coordinates": [135.5089, 35.0039]
+    "coordinates": [135.7239, 35.0278]
   },
   "properties": {
-    "name": "龍安寺駅",
+    "name": "等持院・立命館大学衣笠キャンパス前駅",
     "type": "railway_station",
     "line": "京福電鉄北野線"
   }
@@ -882,16 +880,16 @@ Point, LineString, Polygon をサポート。
   "geometry": {
     "type": "LineString",
     "coordinates": [
-      [135.5089, 35.0039],
-      [135.5100, 35.0020],
-      [135.5110, 35.0000],
-      [135.5122, 34.9981]
+      [135.7239, 35.0278],
+      [135.7241, 35.0295],
+      [135.7243, 35.0312],
+      [135.7245, 35.0330]
     ]
   },
   "properties": {
-    "name": "龍安寺駅から大学への通学路",
+    "name": "駅から大学への通学路",
     "type": "footway",
-    "distance": "約800m"
+    "distance": "約600m"
   }
 }
 ```
@@ -905,17 +903,16 @@ Point, LineString, Polygon をサポート。
   "geometry": {
     "type": "Polygon",
     "coordinates": [[
-      [135.5100, 34.9990],
-      [135.5140, 34.9990],
-      [135.5140, 34.9970],
-      [135.5100, 34.9970],
-      [135.5100, 34.9990]
+      [135.7215, 35.0391],
+      [135.7274, 35.0391],
+      [135.7274, 35.0313],
+      [135.7215, 35.0313],
+      [135.7215, 35.0391]
     ]]
   },
   "properties": {
-    "name": "立命館大学衣笠キャンパス敷地",
-    "type": "university_campus",
-    "area": "約67万平方メートル"
+    "name": "立命館大学衣笠キャンパス敷地（簡略化した四角形）",
+    "type": "university_campus"
   }
 }
 ```
@@ -929,19 +926,19 @@ Point, LineString, Polygon をサポート。
   "features": [
     {
       "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [135.5122, 34.9981]},
+      "geometry": {"type": "Point", "coordinates": [135.7245, 35.0330]},
       "properties": {"name": "立命館大学衣笠キャンパス", "type": "university"}
     },
     {
       "type": "Feature",
-      "geometry": {"type": "Point", "coordinates": [135.5089, 35.0039]},
-      "properties": {"name": "龍安寺駅", "type": "railway_station"}
+      "geometry": {"type": "Point", "coordinates": [135.7239, 35.0278]},
+      "properties": {"name": "等持院・立命館大学衣笠キャンパス前駅", "type": "railway_station"}
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "LineString",
-        "coordinates": [[135.5089, 35.0039], [135.5122, 34.9981]]
+        "coordinates": [[135.7239, 35.0278], [135.7245, 35.0330]]
       },
       "properties": {"name": "通学路", "type": "footway"}
     }
@@ -977,7 +974,5 @@ https://www.openstreetmap.org/user/new
 ## 次回もよろしくお願いします
 
 **第4-5回: OpenStreetMap について**
-
-[日時・教室]
 
 課題の提出をお忘れなく！

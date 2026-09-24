@@ -11,7 +11,7 @@ paginate: true
 
 ## ウェブ地図の構成要素
 
-立命館大学 2025年度 秋セメスター 火曜5限
+立命館大学 2026年度 秋セメスター 火曜5限
 授業時間：95分
 
 ---
@@ -19,9 +19,9 @@ paginate: true
 ## 本日のアジェンダ
 
 1. **前回の振り返り・課題確認** (12分)
-3. **タイルの仕組み** (28分)
-4. **MapLibre GL JS の概要とセットアップ** (27分)
-5. **実習・質疑応答** (5分)
+2. **タイルの仕組み** (28分)
+3. **MapLibre GL JS の概要とセットアップ** (27分)
+4. **実習・質疑応答** (5分)
 
 ---
 
@@ -115,17 +115,17 @@ Y: 縦方向(南北)のタイル番号
 #### 例：大阪駅周辺（ズームレベル15）
 
 ```
-https://tile.openstreetmap.org/15/28719/13011.png
+https://tile.openstreetmap.org/15/28717/13012.png
 ```
 
-<img width=256 src="https://tile.openstreetmap.org/15/28719/13011.png" />
+<img width=256 src="https://tile.openstreetmap.org/15/28717/13012.png" />
 
 ---
 
 ### 実習
 
 1. 以下のURLをブラウザのアドレスバーに入力
-https://tile.openstreetmap.org/15/28719/13011.png
+https://tile.openstreetmap.org/15/28717/13012.png
 
 2. X 成分、Y 成分を +-1 して、上下左右の隣に移動できるのを確認してみる。
 
@@ -195,7 +195,7 @@ https://tile.openstreetmap.org/15/28719/13011.png
 > オープンソースの WebGL ベース地図ライブラリ
 
 #### 特徴
-- **オープンソース**：MIT ライセンス
+- **オープンソース**：BSD-3-Clause ライセンス
 - **Mapbox GL JS のフォーク**：2020年に分岐
 - **ベクタータイル対応**：高性能な地図表示
 - **カスタマイズ性**：柔軟なスタイリング
@@ -218,7 +218,7 @@ https://tile.openstreetmap.org/15/28719/13011.png
 - **回転・傾斜**：3D 的な地図操作
 
 #### 2. スタイリング
-- **JSON ベース**：Mapbox Style Specification
+- **JSON ベース**：MapLibre Style Specification
 - **レイヤー管理**：複数レイヤーの重ね合わせ
 - **データドリブン**：属性値による動的スタイル
 
@@ -287,7 +287,7 @@ $ git add .
 
 # コミットを作成。コミットとは Git におけるバージョン管理の最小単位
 # -m 以降は、コミットメッセージと呼ばれる、変更の概要
-$ git commit -m"9回目授業の提出"
+$ git commit -m"課題の提出"
 
 # 変更を Codespace -> GitHub リポジトリにプッシュする
 $ git push origin main
@@ -309,7 +309,7 @@ $ git push origin main
 
 ## 次回予告
 
-### 第7-8回：MapLibre GL JS の基礎操作
+### 第9回：MapLibre GL JS の基礎操作
 - 地図の基本操作（移動・拡大縮小）
 - 地図のカスタマイズ方法
 - レイヤー追加

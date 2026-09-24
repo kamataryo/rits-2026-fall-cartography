@@ -11,7 +11,7 @@ paginate: true
 
 ## 第10回：スタイルの基本（ポイント、ライン、ポリゴン）
 
-立命館大学 2025年度 秋セメスター 火曜5限
+立命館大学 2026年度 秋セメスター 火曜5限
 授業時間：95分
 
 ---
@@ -86,7 +86,7 @@ https://github.com/kamataryo/rits-2025-fall-cartography__10-webmap-style-sample
 
 ## Layer
 
-レイヤーは、上にあるものほど下にレンダリングされる（重なる）
+`layers` 配列の先頭にあるものほど下に描画され、後ろのものほど上に重なる
 
 - Source なしで使える type
   - `background`
@@ -161,7 +161,7 @@ filter:['==', ['get', 'amenity'], 'university'],
 
 ## 値の内挿、ズームによる制御
 
-https://docs.mapbox.com/style-spec/reference/expressions/#interpolate
+https://maplibre.org/maplibre-style-spec/expressions/#interpolate
 
 ---
 
@@ -172,7 +172,7 @@ https://docs.mapbox.com/style-spec/reference/expressions/#interpolate
 - どのようなプロパティがあるのかを確認
 - リポジトリに配置して、source として読み込む
 - レイヤーを作成する。この際、1つのソースに対して、2つ以上のレイヤーを作成してください（最低、合計4つ）
-- また、レイヤーのうち、少なくとも1つは、symbol レイヤーとしてください　  
+- また、レイヤーのうち、少なくとも1つは、symbol レイヤーとしてください
 - スタイルを設定する。Filter 及び Expression をそれぞれ少なくとも1つ利用してください
 例:
   - 特定の値だけを持った地物のみを Filter で抽出する
@@ -183,7 +183,7 @@ https://docs.mapbox.com/style-spec/reference/expressions/#interpolate
 ## 課題の提出方法
 
 - フォークしたリポジトリの URL を提出
-- 期限: 2025/12/16 (火)
+- 期限: 日付は manaba+R で確認
 
 ---
 
