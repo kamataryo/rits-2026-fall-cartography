@@ -31,7 +31,7 @@ _html: true
 ## 自己紹介
 
 - ソフトウェア開発者
-  - フリーランス・企業勤務。開発歴 12年
+  - フリーランス・企業勤務。開発歴 13年
     - ウェブ開発
     - 地図配信サービス開発
 - 立命館大学
@@ -45,8 +45,8 @@ _html: true
 ### 授業名
 オープンデータで始めるウェブカートグラフィ入門
 
-- **MapLibre GL JS** ブラウザで地図を表示するためのライブラリ
-- **OpenStreetMap** ウェブで利用できる地図、あるいは地図コミュニティ
+- **オープンデータ** 誰でも自由に利用・加工・再配布できるように公開されたデータ。この授業では主に **OpenStreetMap** を使います
+- **ウェブ** ブラウザで表示する地図を扱います。表示には **MapLibre GL JS** などの OSS ライブラリを使います
 - **カートグラフィ** 地図作成のこと。`carto-` (地図)  `-graphy` (記述したもの)
 
 ---
@@ -56,7 +56,7 @@ _html: true
 ### 授業全体を通した目標
 - ウェブ地図の技術を理解する
 - 地図アプリケーションの仕組みを理解する
-- 地図アプリケーションを活用をできる
+- 地図アプリケーションを活用できる
 - **オープンデータ**を活用できる
 - **オープンソース**ソフトウェアを活用できる
 
@@ -107,15 +107,15 @@ _html: true
 #### [Google Maps](https://www.google.com/maps)
 - **特徴**: アプリ 10億ダウンロード<small>[*1]</small>、豊富な POI (Point of Interest)
 - **技術**: 独自のタイル配信システム
-- **ライセンス**: 基本的に有料
+- **ライセンス**: アプリは無料。開発者向けの API は従量課金（無料枠あり）
 
 <!-- _footer: '[*1 <a href="https://www.nikkei.com/article/DGXZRSP642755_V21C22A0000000/">App Annie Japan、「Googleマップアプリ10億ダウンロード突破」について発表</a> 日本経済新聞' -->
 
 ---
 
 #### [OpenStreetMap](https://www.openstreetmap.org/)
-- **特徴**: オープンソース、コミュニティ主導
-- **技術**: オープンデータ、自由に利用可能
+- **特徴**: オープンデータ、コミュニティ主導（誰でも編集できる）
+- **技術**: 地図データを自由に取得・利用可能。編集ツールや配信ソフトウェアもオープンソース
 - **ライセンス**: ODbL（Open Database License）
 
 ![OSM Logo](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/256px-Openstreetmap_logo.svg.png)
@@ -124,7 +124,6 @@ _html: true
 
 #### その他の地図サービス
 - **Apple Maps**: iOS標準
-- **Bing Maps**: Microsoft提供
 - **HERE Maps**: 自動車業界で強い
 - **国土地理院地図**: 日本の公的機関
 
@@ -186,7 +185,7 @@ _html: true
 ### 必要なソフトウェア
 
 - **ブラウザ**: Google Chrome
-- **エディタ**: GitHub Codespace (オンラインエディタ)
+- **エディタ**: GitHub Codespaces (オンラインエディタ)
 
 ---
 
@@ -194,19 +193,19 @@ _html: true
 
 - GitHub のアカウント登録
 - GitHub について
-- GitHub Codespace について
+- GitHub Codespaces について
 
 ---
 
 ### 環境セットアップ
 
-- GitHub であらかじめ用意した以下のリポジトリを codespace で開き、実行
+- GitHub であらかじめ用意した以下のリポジトリを Codespaces で開き、実行
 - カスタマイズして、表示がどう変わるか確認
 
 **実習用リポジトリ**:
 https://github.com/kamataryo/rits-2025-fall-cartography__01-webmap-sample
 
-Codespace で開く
+Codespaces で開く
 <img width="500" src="images/01_003_codespace.png" />
 
 ---
@@ -270,6 +269,9 @@ Codespace で開く
 - **評価ポイント**: 
   - 調査内容・正確性
   - 文章構成や表現の適切さ
+
+### 任意の設問（評価対象外）
+- この授業で作ってみたい地図があれば、一言書いてください
 
 </div>
 
