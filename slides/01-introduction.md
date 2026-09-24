@@ -220,6 +220,8 @@ Codespaces で開く
 
 ---
 
+<style scoped>section { font-size: 24px; }</style>
+
 <div class="assignment">
 
 ## 課題: 興味のある地図を1つ選び、特徴を調査する
@@ -288,12 +290,3 @@ Codespaces で開く
 - moodle+R
 - **メール**: kamata.y.ryo@gmail.com
 
----
-
-<!-- _class: title -->
-
-# ありがとうございました
-
-## 次回もよろしくお願いします
-
-**第2回: 地図データの基礎**
