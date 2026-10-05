@@ -77,8 +77,9 @@ paginate: true
 **実習**: `場所 緯度・経度` の形式で投稿してみてください。
 例: `京都駅 34.9858, 135.7588`
 
-⚠️ Google Maps などは「緯度, 経度」の順で表示しますが、このあと扱う GeoJSON では **[経度, 緯度]** の順で書きます
+moodle のフォーラムのリンク: https://lms.ritsumei.ac.jp/mod/forum/view.php?id=343693
 
+⚠️ Google Maps などは「緯度, 経度」の順で表示しますが、このあと扱う GeoJSON では **[経度, 緯度]** の順で書きます
 
 ---
 
