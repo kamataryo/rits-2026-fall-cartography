@@ -384,17 +384,34 @@ out geom;                         // 形状（座標）付きで出力
 ## 条件を変えてみよう
 
 ```
-[out:json][timeout:25];
-{{geocodeArea:京都市}}->.searchArea;
+[out:json][timeout:90];
+{{geocodeArea:京都府京都市上京区}}->.searchArea;
 nwr["amenity"="cafe"]["name"](area.searchArea);
-out geom;
+out center;
 ```
 
-- `{{geocodeArea:京都市}}`: 地名で範囲を指定
+- `{{geocodeArea:京都府京都市上京区}}`: 地名で範囲を指定
 - `["name"]`: **name タグを持つもの**だけ（値は問わない）
 - 条件を `[...]` で並べると「かつ（AND）」になる
+- `out center`: ウェイやリレーションも **中心の1点** だけで出力（軽い）
 
 ⚠️ 広すぎる範囲・条件のゆるい検索はタイムアウトしたり、公開サーバーに負荷をかけたりする
+
+---
+
+## うまくいかない時
+
+`runtime error: Query timed out ...` などのエラーが出たら、次を試そう
+
+| 対処 | 方法 |
+| --- | --- |
+| 待ち時間を延ばす | `[timeout:25]` → `[timeout:90]` |
+| 範囲を狭くする | `京都市` → `京都府京都市上京区` |
+| 出力を軽くする | `out geom` → `out center` |
+| サーバーを変える | 「設定」→「一般設定」→「サーバー」に<br />`https://maps.mail.ru/osm/tools/overpass/api/` を指定 |
+
+- 地名は `京都府京都市` のように **上位の地名から** 書くと、別の場所と取り違えにくい
+- 公開サーバーは混雑していることがある。**時間をおいて再実行** するのも手
 
 ---
 
