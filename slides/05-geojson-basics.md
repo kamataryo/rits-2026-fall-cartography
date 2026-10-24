@@ -131,6 +131,10 @@ JSON、 XML、 CSV、 etc.
 </shops>
 ```
 
+---
+
+### XML の構成要素
+
 XML を構成するもの:
 - 要素 ex. `<shop></shop>`
 - 属性 ex. `name="喫茶さくら"`
@@ -493,17 +497,6 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 2. **Feature**: 地物（ジオメトリ + 属性）
 3. **FeatureCollection**: 複数の Feature をまとめたもの
 
-#### 共通ルール
-- すべての GeoJSON オブジェクトは `type` を必ず持つ
-- 例: FeatureCollection は `type` と `features` が必須
-
-```text
-{
-  "type": "FeatureCollection",
-  "features": [...]
-}
-```
-
 </div>
 <svg width="380" height="330" viewBox="0 0 380 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="FeatureCollection の中に複数の Feature があり、各 Feature は geometry と properties を持つ入れ子の図">
   <rect x="4" y="4" width="372" height="322" rx="16" fill="#f3f3f3" stroke="#666" stroke-width="2"/>
@@ -529,6 +522,20 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 
 ---
 
+### 共通ルール
+
+- すべての GeoJSON オブジェクトは `type` を必ず持つ
+- 例: FeatureCollection は `type` と `features` が必須
+
+```text
+{
+  "type": "FeatureCollection",
+  "features": [...]
+}
+```
+
+---
+
 ### Geometry オブジェクト
 
 <div class="cols">
@@ -542,7 +549,22 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 }
 ```
 
+</div>
+<svg width="240" height="150" viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="Point は1つの点であることを示す図">
+  <rect x="2" y="2" width="236" height="146" rx="12" fill="#f7f9fc" stroke="#ccd" stroke-width="2"/>
+  <text x="16" y="30" font-size="18" font-weight="bold" fill="#333">Point</text>
+  <circle cx="120" cy="86" r="9" fill="#2f6fbf"/>
+  <text x="120" y="122" font-size="14" text-anchor="middle" fill="#333">[135.5, 34.7]</text>
+</svg>
+</div>
+
+---
+
 #### LineString（線）
+
+<div class="cols">
+<div>
+
 ```json
 {
   "type": "LineString",
@@ -555,11 +577,7 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 ```
 
 </div>
-<svg width="240" height="420" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="Point は1つの点、LineString は3つの点を順につないだ線であることを示す図">
-  <rect x="2" y="2" width="236" height="146" rx="12" fill="#f7f9fc" stroke="#ccd" stroke-width="2"/>
-  <text x="16" y="30" font-size="18" font-weight="bold" fill="#333">Point</text>
-  <circle cx="120" cy="86" r="9" fill="#2f6fbf"/>
-  <text x="120" y="122" font-size="14" text-anchor="middle" fill="#333">[135.5, 34.7]</text>
+<svg width="240" height="250" viewBox="0 170 240 250" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="LineString は3つの点を順につないだ線であることを示す図">
   <rect x="2" y="172" width="236" height="246" rx="12" fill="#f7f9fc" stroke="#ccd" stroke-width="2"/>
   <text x="16" y="200" font-size="18" font-weight="bold" fill="#333">LineString</text>
   <polyline points="50,380 120,310 190,240" fill="none" stroke="#2f6fbf" stroke-width="4"/>
@@ -611,6 +629,10 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
   <text x="150" y="136" font-size="16" text-anchor="middle" fill="#1d4f8f">反時計回り</text>
 </svg>
 </div>
+
+---
+
+#### Polygon（面）の座標
 
 **注意**: Polygon の座標は三重配列
 - 1段目: リングの配列（外周 + 穴）
@@ -669,6 +691,9 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 
 ### 複合 Geometry
 
+<div class="cols">
+<div>
+
 #### MultiPoint
 ```json
 {
@@ -680,6 +705,9 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
 }
 ```
 
+</div>
+<div>
+
 #### MultiLineString
 ```json
 {
@@ -690,6 +718,9 @@ JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
   ]
 }
 ```
+
+</div>
+</div>
 
 ---
 
