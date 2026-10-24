@@ -5,6 +5,11 @@ class: title
 paginate: true
 ---
 
+<style>
+.cols { display: flex; gap: 24px; align-items: center; }
+.cols > div { flex: 1; min-width: 0; }
+</style>
+
 <!-- _class: title -->
 
 # オープンデータで始める<br />ウェブカートグラフィ入門
@@ -43,12 +48,7 @@ paginate: true
 
 ## データ交換フォーマット
 
-GeoJSON vs. JSON
-
-- GeoJSON は JSON フォーマットで位置情報を表すもの
-- ウェブシステムなどの文脈では「データ交換フォーマット」などとも呼ばれる
-
----
+GeoJSON は JSON フォーマットで位置情報を表すもの。JSON はウェブシステムなどの文脈では「データ交換フォーマット」とも呼ばれる
 
 ### 考えてみよう
 
@@ -297,38 +297,7 @@ JSON は**キー名を1件ごとに毎回書く**ので、データが増える�
 |コメントサポート|×|○|○|×|
 |可読性|△|○|×|○|
 
----
-
-### JSON vs. XML
-
-- XML は階層構造や属性を組み合わせた複雑なデータを表現できる。ドキュメント指向(e.g. HTML)
-- XML はスキーマに基づき要素・属性・型の正当性を事前検証できる
-- 小規模なデータの場合は JSON の方が可読性が高い
-- XML は機械判読にパーサー（処理プログラム）が必要。JSON はブラウザがネイティブサポート
-
----
-
-### JSON vs. YAML
-
-- データ表現力に大きな違いはない
-- YAML の方が人間が読みやすいとされている
-- YAML もパーサーが必要なので処理に一手間あり
-
----
-
-### JSON vs. CSV
-
-- CSV は 表形式のデータに最適で、行＝レコード、列＝フィールド
-- JSON のような階層構造やネストされたオブジェクトは表現できない
-- スプレッドシートへの取り込み/からの書き出しが容易
-
----
-
-### なぜ多様なデータフォーマットが存在するのか
-
-- データ構造や用途が多様で、単一フォーマットではすべてに最適化できない
-- 可読性、処理効率、バリデーションなどの要件がフォーマットごとに異なる
-- 既存システムや業界標準との互換性を確保する必要がある
+用途（ウェブ API、設定ファイル、表計算など）や既存システムとの互換性によって、適したフォーマットが異なる
 
 ---
 
@@ -336,44 +305,23 @@ JSON は**キー名を1件ごとに毎回書く**ので、データが増える�
 
 ### プリミティブ型（基本型）
 
-#### 1. 数値型
-```json
-42
-3.14159
--10
-```
+| 型 | 例 |
+|--|--|
+| 数値型 | `42` `3.14159` `-10` |
+| 文字列型 | `"Hello, World!"` `"立命館大学"` `"2026-10-27"` |
+| 真偽値型 | `true` `false` |
+| null型 | `null` |
 
----
-
-#### 2. 文字列型
-```json
-"Hello, World!"
-"立命館大学"
-"2026-10-27"
-```
-**重要**: 必ずダブルクオーテーション `""` で囲む
-
----
-
-#### 3. 真偽値型
-```json
-true
-false
-```
-
-#### 4. null型
-```json
-null
-```
+**重要**: 文字列は必ずダブルクオーテーション `""` で囲む
 
 ---
 
 ## JSON の配列型
 
-### 配列の基本構文
-
 ```json
-[要素1, 要素2, 要素3]
+["りんご", "みかん", "バナナ"]
+[1, 2, 3, 4, 5]
+[true, false, null, 42, "文字列"]
 ```
 
 #### 特徴
@@ -384,44 +332,20 @@ null
 
 ---
 
-#### 例
-```json
-["りんご", "みかん", "バナナ"]
-[1, 2, 3, 4, 5]
-[true, false, null, 42, "文字列"]
-```
-
----
-
 ### 実習: 配列を書いてみよう
 
-あなたの好きな食べ物トップ3を JSON の配列形式で書いてみよう。
+あなたの好きな食べ物トップ3を JSON の配列形式で書いて、ブラウザのコンソールで確かめよう。
 
-**例**: `["ラーメン", "寿司", "カレー"]`
+```js
+JSON.parse(`["ラーメン", "寿司", "カレー"]`)
+```
 
+- 正しければ配列が表示される。間違っていると `SyntaxError` が出る
+- `` ` `` はバッククオート（JIS キーボードでは `Shift + @`）
 
 ---
 
 ## JSON のオブジェクト型
-
-### オブジェクトの基本構文
-
-```text
-{
-  "キー1": 値1,
-  "キー2": 値2,
-  "キー3": 値3
-}
-```
-
-#### 特徴
-- `{}` 波かっこで囲み、`"キー": 値` のペアをカンマ `,` で区切る
-- キーは必ず文字列（ダブルクオーテーションで囲む）
-- 値は任意の JSON データ型（プリミティブ型、配列型、オブジェクト型）
-
----
-
-#### オブジェクトの例
 
 ```json
 {
@@ -433,44 +357,33 @@ null
 }
 ```
 
-改行しなくてもよい。（見やすいように）
-
-```json
-{ "店名": "喫茶さくら", "業態": "カフェ", "席数": 20 }
-```
+#### 特徴
+- `{}` 波かっこで囲み、`"キー": 値` のペアをカンマ `,` で区切る
+- キーは必ず文字列（ダブルクオーテーションで囲む）
+- 値は任意の JSON データ型（プリミティブ型、配列型、オブジェクト型）
+- 改行・インデントは自由: `{ "店名": "喫茶さくら", "席数": 20 }` でもよい
 
 ---
 
 ### 実習: オブジェクトを書いてみよう
 
-今日のお昼ご飯を JSON のオブジェクト形式で表現してみよう。
+今日のお昼ご飯を JSON のオブジェクト形式で表現して、コンソールで確かめよう。
 メニュー名と値段をキーとして使ってください。
 
-**例**: `{"メニュー": "親子丼", "値段": 800}`
-
+```js
+JSON.parse(`{"メニュー": "親子丼", "値段": 800}`)
+```
 
 ---
+
+<style scoped>section { font-size: 24px; }</style>
 
 ## JSON 記法のルール
 
 #### 1. 文字列は必ずダブルクオーテーション
 
-✅ 正しい
-```json
-"Hello"
-```
-
-❌ 間違い
-```text
-'Hello'
-Hello
-```
-
-※ JSON にはコメントも書けない（`// ...` や `/* ... */` は不可）
-
----
-
-<style scoped>section { font-size: 24px; }</style>
+✅ 正しい: `"Hello"`
+❌ 間違い: `'Hello'`、`Hello`
 
 #### 2. 最後の要素の後にカンマは不要
 
@@ -486,15 +399,7 @@ Hello
 {"x": 1, "y": 2,}
 ```
 
-#### 3. 改行・インデントは自由
-```json
-{"name": "太郎", "age": 20}
-
-{
-  "name": "太郎",
-  "age": 20
-}
-```
+※ JSON にはコメントも書けない（`// ...` や `/* ... */` は不可）
 
 ---
 
@@ -527,15 +432,37 @@ C.
 
 ---
 
-## JSON vs. JavaScript
+<style scoped>pre { font-size: 16px; }</style>
 
-- JavaScript の文法は JSON フォーマットの**スーパーセット**
-- JSON は JavaScript の**サブセット**、正しい JavaScript として解釈可能
-- ただし、JavaScript のコードが JSON として解釈できるとは限らない
+### コンソールで確かめよう
 
-=>
-JSON は、JavaScript の自由な表現を「データ交換」に特化して制限したフォーマット
-この制限により、「相互運用性」「安全性」「可搬性」が保証されている
+<div class="cols">
+<div>
+
+B と C を `JSON.parse` に入れると `SyntaxError` になる
+
+```js
+JSON.parse(`{ name: "田中太郎", hobbies: ["読書",] }`) // SyntaxError
+```
+
+一方、`JSON.parse` を使わずにそのまま入力すると、エラーにならない
+
+```js
+{ name: "田中太郎", hobbies: ["読書",] } // OK
+```
+
+</div>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="JavaScript の書き方の中に JSON の書き方が含まれる包含図">
+  <rect x="4" y="4" width="392" height="292" rx="24" fill="#fff4d6" stroke="#c99a00" stroke-width="3"/>
+  <text x="24" y="40" font-size="22" font-weight="bold" fill="#7a5d00">JavaScript</text>
+  <text x="24" y="270" font-size="16" fill="#7a5d00">{ name: '太郎', }</text>
+  <rect x="60" y="70" width="280" height="150" rx="20" fill="#dcecff" stroke="#2f6fbf" stroke-width="3"/>
+  <text x="80" y="104" font-size="22" font-weight="bold" fill="#1d4f8f">JSON</text>
+  <text x="80" y="170" font-size="16" fill="#1d4f8f">{ "name": "太郎" }</text>
+</svg>
+</div>
+
+=> JSON は JavaScript の**サブセット**（JavaScript は JSON の**スーパーセット**）。JavaScript の書き方を「データ交換」用に制限したもの
 
 ---
 
@@ -558,6 +485,9 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 
 ### 基本構造
 
+<div class="cols">
+<div>
+
 #### GeoJSON オブジェクトの種類
 1. **Geometry**: 幾何学的形状
 2. **Feature**: 地物（ジオメトリ + 属性）
@@ -574,9 +504,35 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 }
 ```
 
+</div>
+<svg width="380" height="330" viewBox="0 0 380 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="FeatureCollection の中に複数の Feature があり、各 Feature は geometry と properties を持つ入れ子の図">
+  <rect x="4" y="4" width="372" height="322" rx="16" fill="#f3f3f3" stroke="#666" stroke-width="2"/>
+  <text x="20" y="34" font-size="20" font-weight="bold" fill="#333">FeatureCollection</text>
+  <rect x="24" y="56" width="332" height="122" rx="12" fill="#fff4d6" stroke="#c99a00" stroke-width="2"/>
+  <text x="40" y="84" font-size="18" font-weight="bold" fill="#7a5d00">Feature</text>
+  <rect x="40" y="98" width="140" height="64" rx="8" fill="#dcecff" stroke="#2f6fbf" stroke-width="2"/>
+  <text x="52" y="124" font-size="17" fill="#1d4f8f">geometry</text>
+  <text x="52" y="149" font-size="14" fill="#1d4f8f">形と座標</text>
+  <rect x="196" y="98" width="144" height="64" rx="8" fill="#e3f4e1" stroke="#3c8d3c" stroke-width="2"/>
+  <text x="208" y="124" font-size="17" fill="#2b6a2b">properties</text>
+  <text x="208" y="149" font-size="14" fill="#2b6a2b">名前などの属性</text>
+  <rect x="24" y="190" width="332" height="122" rx="12" fill="#fff4d6" stroke="#c99a00" stroke-width="2"/>
+  <text x="40" y="218" font-size="18" font-weight="bold" fill="#7a5d00">Feature</text>
+  <rect x="40" y="232" width="140" height="64" rx="8" fill="#dcecff" stroke="#2f6fbf" stroke-width="2"/>
+  <text x="52" y="258" font-size="17" fill="#1d4f8f">geometry</text>
+  <text x="52" y="283" font-size="14" fill="#1d4f8f">形と座標</text>
+  <rect x="196" y="232" width="144" height="64" rx="8" fill="#e3f4e1" stroke="#3c8d3c" stroke-width="2"/>
+  <text x="208" y="258" font-size="17" fill="#2b6a2b">properties</text>
+  <text x="208" y="283" font-size="14" fill="#2b6a2b">名前などの属性</text>
+</svg>
+</div>
+
 ---
 
 ### Geometry オブジェクト
+
+<div class="cols">
+<div>
 
 #### Point（点）
 ```json
@@ -598,9 +554,31 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 }
 ```
 
+</div>
+<svg width="240" height="420" viewBox="0 0 240 420" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="Point は1つの点、LineString は3つの点を順につないだ線であることを示す図">
+  <rect x="2" y="2" width="236" height="146" rx="12" fill="#f7f9fc" stroke="#ccd" stroke-width="2"/>
+  <text x="16" y="30" font-size="18" font-weight="bold" fill="#333">Point</text>
+  <circle cx="120" cy="86" r="9" fill="#2f6fbf"/>
+  <text x="120" y="122" font-size="14" text-anchor="middle" fill="#333">[135.5, 34.7]</text>
+  <rect x="2" y="172" width="236" height="246" rx="12" fill="#f7f9fc" stroke="#ccd" stroke-width="2"/>
+  <text x="16" y="200" font-size="18" font-weight="bold" fill="#333">LineString</text>
+  <polyline points="50,380 120,310 190,240" fill="none" stroke="#2f6fbf" stroke-width="4"/>
+  <circle cx="50" cy="380" r="6" fill="#2f6fbf"/>
+  <circle cx="120" cy="310" r="6" fill="#2f6fbf"/>
+  <circle cx="190" cy="240" r="6" fill="#2f6fbf"/>
+  <text x="60" y="404" font-size="13" text-anchor="middle" fill="#333">[135.5, 34.7]</text>
+  <text x="130" y="332" font-size="13" fill="#333">[135.6, 34.8]</text>
+  <text x="190" y="226" font-size="13" text-anchor="middle" fill="#333">[135.7, 34.9]</text>
+</svg>
+</div>
+
 ---
 
 #### Polygon（面）
+
+<div class="cols">
+<div>
+
 ```json
 {
   "type": "Polygon",
@@ -616,6 +594,24 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 }
 ```
 
+</div>
+<svg width="300" height="260" viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="正方形の4つの角に1から4の番号があり、1から反時計回りに進んで5番目で1に戻る図">
+  <defs>
+    <marker id="arr-poly" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4f8f"/></marker>
+  </defs>
+  <rect x="60" y="50" width="180" height="160" fill="#dcecff" stroke="#2f6fbf" stroke-width="3"/>
+  <line x1="138" y1="210" x2="162" y2="210" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-poly)"/>
+  <line x1="240" y1="142" x2="240" y2="118" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-poly)"/>
+  <line x1="162" y1="50" x2="138" y2="50" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-poly)"/>
+  <line x1="60" y1="118" x2="60" y2="142" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-poly)"/>
+  <text x="52" y="234" font-size="18" text-anchor="end" fill="#333">1・5</text>
+  <text x="248" y="234" font-size="18" fill="#333">2</text>
+  <text x="248" y="42" font-size="18" fill="#333">3</text>
+  <text x="52" y="42" font-size="18" text-anchor="end" fill="#333">4</text>
+  <text x="150" y="136" font-size="16" text-anchor="middle" fill="#1d4f8f">反時計回り</text>
+</svg>
+</div>
+
 **注意**: Polygon の座標は三重配列
 - 1段目: リングの配列（外周 + 穴）
 - 2段目: リング = 座標点の配列。最初と最後の座標は同じ（閉じた形状）
@@ -627,6 +623,9 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 <style scoped>pre { font-size: 20px; }</style>
 
 ### ドーナツ(参考)
+
+<div class="cols">
+<div>
 
 ```json
 {
@@ -646,6 +645,25 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
   ]
 }
 ```
+
+</div>
+<svg width="260" height="290" viewBox="0 0 260 290" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="外周の正方形が反時計回り、中央の穴の正方形が時計回りに並ぶドーナツ型ポリゴンの図">
+  <defs>
+    <marker id="arr-donut" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1d4f8f"/></marker>
+  </defs>
+  <path d="M30,30 H230 V230 H30 Z M80,80 V180 H180 V80 Z" fill="#dcecff" fill-rule="evenodd" stroke="#2f6fbf" stroke-width="3"/>
+  <line x1="118" y1="230" x2="142" y2="230" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="230" y1="142" x2="230" y2="118" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="142" y1="30" x2="118" y2="30" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="30" y1="118" x2="30" y2="142" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="80" y1="142" x2="80" y2="118" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="118" y1="80" x2="142" y2="80" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="180" y1="118" x2="180" y2="142" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <line x1="142" y1="180" x2="118" y2="180" stroke="#1d4f8f" stroke-width="3" marker-end="url(#arr-donut)"/>
+  <text x="130" y="136" font-size="18" text-anchor="middle" fill="#333">穴</text>
+  <text x="130" y="270" font-size="15" text-anchor="middle" fill="#333">外周: 反時計回り / 穴: 時計回り</text>
+</svg>
+</div>
 
 ---
 
@@ -688,25 +706,10 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 
 ---
 
-#### GeometryCollection（参考）
-
-種類の違うジオメトリをまとめたもの。`coordinates` ではなく `geometries` を持つ
-
-```json
-{
-  "type": "GeometryCollection",
-  "geometries": [
-    { "type": "Point", "coordinates": [135.5, 34.7] },
-    { "type": "LineString", "coordinates": [[135.5, 34.7], [135.6, 34.8]] }
-  ]
-}
-```
-
----
+<style scoped>pre { font-size: 20px; }</style>
 
 ### Feature オブジェクト
 
-#### 基本構造
 ```json
 {
   "type": "Feature",
@@ -722,13 +725,7 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 }
 ```
 
----
-
-#### プロパティの活用
-- `name`: 名称
-- `description`: 説明
-- `category`: カテゴリ
-- その他、任意のキーを使ってプロパティを自由に定義可能
+- `properties` には `name`、`description`、`category` など任意のキーを自由に定義できる
 - ただし `type` は GeoJSON 自体の `"type": "Feature"` と紛らわしいので避けるのが無難
 
 ---
@@ -758,6 +755,9 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 
 ### 座標の順序
 
+<div class="cols">
+<div>
+
 #### GeoJSON の標準
 ```text
 [経度, 緯度, 標高（オプション）]
@@ -772,6 +772,24 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 [135.4959, 34.7024]
 ```
 
+</div>
+<svg width="320" height="270" viewBox="0 0 320 270" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" role="img" aria-label="横軸が経度、縦軸が緯度の座標平面に大阪駅の点がある図。経度が x、緯度が y にあたる">
+  <defs>
+    <marker id="arr-axis" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>
+  </defs>
+  <line x1="80" y1="220" x2="300" y2="220" stroke="#333" stroke-width="2" marker-end="url(#arr-axis)"/>
+  <line x1="80" y1="220" x2="80" y2="24" stroke="#333" stroke-width="2" marker-end="url(#arr-axis)"/>
+  <text x="304" y="252" font-size="15" text-anchor="end" fill="#333">経度 = x（東西）</text>
+  <text x="90" y="24" font-size="15" fill="#333">緯度 = y（南北）</text>
+  <line x1="200" y1="96" x2="200" y2="220" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <line x1="80" y1="96" x2="200" y2="96" stroke="#999" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="200" cy="96" r="8" fill="#2f6fbf"/>
+  <text x="212" y="88" font-size="16" fill="#1d4f8f">大阪駅</text>
+  <text x="200" y="238" font-size="13" text-anchor="middle" fill="#333">135.4959</text>
+  <text x="72" y="100" font-size="13" text-anchor="end" fill="#333">34.7024</text>
+</svg>
+</div>
+
 ---
 
 ### GeoJSON vs 他の地理空間データ形式
@@ -784,49 +802,6 @@ JSON は、JavaScript の自由な表現を「データ交換」に特化して�
 | **GeoJSONSeq** | 1行に1つの Feature を書く GeoJSON（NDJSON と同じ発想） | 大容量データの逐次処理 |
 | **Shapefile** | Esri 仕様、バイナリ（複数ファイル） | GIS ソフト |
 | **GeoPackage** | SQLite ベース、バイナリ、OGC 標準 | GIS ソフト |
-
-
----
-
-## 他の位置情報フォーマットの概要
-
-### KML
-
-Point, LineString, Polygon をサポート。
-その他、3D モデルやトラック（時間付きの軌跡）なども。
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-  <Document>
-    <name>サンプルKML</name>
-    <Placemark>
-      <name>サンプルポイント</name>
-      <description>ここに説明文を入れられます</description>
-      <Point>
-        <coordinates>135.7681,35.0116,10</coordinates>
-      </Point>
-    </Placemark>
-  </Document>
-</kml>
-```
-
----
-
-### GPX
-
-点（wpt）、線（trk/trkpt）、ルート（rte/rtept）をサポート
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="Sample" xmlns="http://www.topografix.com/GPX/1/1">
-  <wpt lat="35.0116" lon="135.7681">
-    <ele>10</ele>
-    <name>サンプルポイント</name>
-    <desc>ここに説明文を入れられます</desc>
-  </wpt>
-</gpx>
-```
 
 ---
 
@@ -842,88 +817,6 @@ Point, LineString, Polygon をサポート。
 2. **最寄り駅**（Point）
 3. **通学路**（LineString）
 4. **キャンパス敷地**（Polygon）
-
----
-
-#### 1. 大学（キャンパス）（Point）
-```json
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [135.7245, 35.0330]
-  },
-  "properties": {
-    "name": "立命館大学衣笠キャンパス",
-    "category": "university",
-    "description": "京都市北区のキャンパス"
-  }
-}
-```
-
----
-
-#### 2. 最寄り駅（Point）
-```json
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [135.7239, 35.0278]
-  },
-  "properties": {
-    "name": "等持院・立命館大学衣笠キャンパス前駅",
-    "category": "railway_station",
-    "line": "京福電鉄北野線"
-  }
-}
-```
-
----
-
-#### 3. 通学路（LineString）
-```json
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "LineString",
-    "coordinates": [
-      [135.7239, 35.0278],
-      [135.7241, 35.0295],
-      [135.7243, 35.0312],
-      [135.7245, 35.0330]
-    ]
-  },
-  "properties": {
-    "name": "駅から大学への通学路",
-    "category": "footway",
-    "distance_m": 600
-  }
-}
-```
-
----
-
-#### 4. キャンパス敷地（Polygon）
-```json
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Polygon",
-    "coordinates": [[
-      [135.7215, 35.0391],
-      [135.7215, 35.0313],
-      [135.7274, 35.0313],
-      [135.7274, 35.0391],
-      [135.7215, 35.0391]
-    ]]
-  },
-  "properties": {
-    "name": "立命館大学衣笠キャンパス敷地（簡略化した四角形）",
-    "category": "university_campus"
-  }
-}
-```
 
 ---
 
@@ -992,7 +885,6 @@ Point, LineString, Polygon をサポート。
 | 物語の舞台 | 作中に登場する場所 | 登場人物の移動ルート | 物語の舞台となる範囲 |
 | 歴史上の人物の足跡 | ゆかりの地 | 旅や移動の経路 | 活動した範囲 |
 | 推しの地図（スポーツ・音楽・食など） | 好きな店や会場 | 遠征・巡礼のルート | よく行くエリア |
-| 最終プロジェクトのテーマ | 自由 | 自由 | 自由 |
 
 - **Point / LineString / Polygon** をそれぞれ1つ以上含む `FeatureCollection` にすること
 - それぞれの Feature の `properties` に `name` と、テーマに合った属性（例: 場面、年代、評価）を1つ以上つけること
@@ -1017,15 +909,6 @@ Point, LineString, Polygon をサポート。
 
 </div>
 
----
-
-## 質疑応答
-
-### 本日の内容について
-- GeoJSON の構造・記法について
-- 座標系・座標順序について
-- データ作成の技術的な質問
-- 課題に関する質問
 
 ---
 
