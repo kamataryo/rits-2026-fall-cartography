@@ -1,6 +1,6 @@
 ---
 marp: true
-title: 'ウェブカートグラフィ入門 第7-8回：MapLibre GL JS の基礎操作'
+title: 'ウェブカートグラフィ入門 第7-8回: MapLibre GL JS の基礎操作'
 theme: default
 class: title
 paginate: true
@@ -10,7 +10,7 @@ paginate: true
 
 # オープンデータで始める<br />ウェブカートグラフィ入門
 
-## 第7-8回：MapLibre GL JS の基礎操作
+## 第7-8回: MapLibre GL JS の基礎操作
 
 立命館大学 2026年度 秋セメスター 火曜5限
 授業時間：190分（2回分）
