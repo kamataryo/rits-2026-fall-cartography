@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第13-14回：プロジェクト発表'
 theme: default
 class: title
 paginate: true

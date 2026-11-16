@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 補足: GitHub Pages を使ったプロジェクトのウェブ公開について'
 theme: default
 class: title
 paginate: true

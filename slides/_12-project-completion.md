@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第12回：応用プロジェクト（2）- 地図プロジェクトの完成'
 theme: default
 class: title
 paginate: true

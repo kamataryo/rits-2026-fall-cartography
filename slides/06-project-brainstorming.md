@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第6回: 応用プロジェクトのブレインストーミング'
 theme: default
 class: title
 paginate: true

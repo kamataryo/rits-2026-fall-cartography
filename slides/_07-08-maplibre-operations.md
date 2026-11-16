@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第7-8回：MapLibre GL JS の基礎操作'
 theme: default
 class: title
 paginate: true

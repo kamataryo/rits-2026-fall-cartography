@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第3-4回: OpenStreetMapのカルチャーと利用'
 theme: default
 class: title
 paginate: true

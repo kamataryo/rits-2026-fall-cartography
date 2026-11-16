@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 ウェブ地図の構成要素'
 theme: default
 class: title
 paginate: true

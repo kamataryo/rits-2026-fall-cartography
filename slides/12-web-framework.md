@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第12回: フロントエンドフレームワーク入門'
 theme: default
 class: title
 paginate: true

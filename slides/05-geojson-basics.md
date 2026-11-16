@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第5回: GeoJSON の基礎'
 theme: default
 class: title
 paginate: true

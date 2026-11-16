@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第10回：スタイルの基本（ポイント、ライン、ポリゴン）'
 theme: default
 class: title
 paginate: true

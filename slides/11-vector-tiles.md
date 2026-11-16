@@ -1,5 +1,6 @@
 ---
 marp: true
+title: 'ウェブカートグラフィ入門 第11回:ベクトルタイルの仕組みと実践'
 theme: default
 class: title
 paginate: true
